@@ -1,13 +1,13 @@
 from brownie import (
-    network,
+    Contract,
+    LinkToken,
+    MockDAI,
+    MockV3Aggregator,
+    MockWETH,
     accounts,
     config,
     interface,
-    MockV3Aggregator,
-    MockWETH,
-    LinkToken,
-    MockDAI,
-    Contract,
+    network,
 )
 
 INITIAL_PRICE_FEED_VALUE = 2000000000000000000000

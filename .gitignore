@@ -30,3 +30,8 @@ yarn-debug.log*
 yarn-error.log*
 
 **/yarn.lock
+
+.trunk
+.flake8
+.isort.cfg
+.markdownlint.yaml

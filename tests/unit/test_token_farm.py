@@ -1,5 +1,6 @@
-from brownie import network
-from brownie import exceptions
+import pytest
+from brownie import exceptions, network
+
 from scripts.deploy import deploy_token_farm_and_ust
 from scripts.util import (
     INITIAL_PRICE_FEED_VALUE,
@@ -7,7 +8,6 @@ from scripts.util import (
     get_account,
     get_contract,
 )
-import pytest
 
 
 def test_set_price_feed_contract():

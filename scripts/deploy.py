@@ -1,9 +1,10 @@
 from typing import Dict, Tuple
-from brownie import accounts, network, config
-from brownie import UselessToken, TokenFarm
+
+from brownie import TokenFarm, UselessToken, accounts, config, network
 from brownie.network.contract import ProjectContract
 from brownie.network.transaction import TransactionReceipt
 from brownie.network.web3 import Web3
+
 from scripts.util import get_account, get_contract
 
 KEPT_BALANCE = Web3.toWei(100, "ether")

@@ -6,21 +6,14 @@
   "ast": {
     "absolutePath": "/home/lukas/.brownie/packages/smartcontractkit/chainlink-brownie-contracts@0.2.1/contracts/src/v0.6/vendor/SafeMathChainlink.sol",
     "exportedSymbols": {
-      "SafeMathChainlink": [
-        524
-      ]
+      "SafeMathChainlink": [524]
     },
     "id": 525,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 387,
-        "literals": [
-          "solidity",
-          "^",
-          "0.6",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.6", ".0"],
         "nodeType": "PragmaDirective",
         "src": "32:23:3"
       },
@@ -37,9 +30,7 @@
         },
         "fullyImplemented": true,
         "id": 524,
-        "linearizedBaseContracts": [
-          524
-        ],
+        "linearizedBaseContracts": [524],
         "name": "SafeMathChainlink",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -50,9 +41,7 @@
               "src": "930:95:3",
               "statements": [
                 {
-                  "assignments": [
-                    399
-                  ],
+                  "assignments": [399],
                   "declarations": [
                     {
                       "constant": false,
@@ -214,10 +203,7 @@
                       "id": 404,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "959:7:3",
                       "typeDescriptions": {
@@ -470,10 +456,7 @@
                       "id": 424,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "1350:7:3",
                       "typeDescriptions": {
@@ -501,9 +484,7 @@
                   "src": "1350:49:3"
                 },
                 {
-                  "assignments": [
-                    432
-                  ],
+                  "assignments": [432],
                   "declarations": [
                     {
                       "constant": false,
@@ -815,9 +796,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    458
-                  ],
+                  "assignments": [458],
                   "declarations": [
                     {
                       "constant": false,
@@ -1011,10 +990,7 @@
                       "id": 463,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "2012:7:3",
                       "typeDescriptions": {
@@ -1272,10 +1248,7 @@
                       "id": 485,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "2664:7:3",
                       "typeDescriptions": {
@@ -1303,9 +1276,7 @@
                   "src": "2664:44:3"
                 },
                 {
-                  "assignments": [
-                    493
-                  ],
+                  "assignments": [493],
                   "declarations": [
                     {
                       "constant": false,
@@ -1616,10 +1587,7 @@
                       "id": 511,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "3336:7:3",
                       "typeDescriptions": {
@@ -1850,65 +1818,44 @@
     "details": "Wrappers over Solidity's arithmetic operations with added overflow checks. * Arithmetic operations in Solidity wrap on overflow. This can easily result in bugs, because programmers usually assume that an overflow raises an error, which is the standard behavior in high level programming languages. `SafeMath` restores this intuition by reverting the transaction when an operation overflows. * Using this library instead of the unchecked operations eliminates an entire class of bugs, so it's recommended to use it always.",
     "methods": {}
   },
-  "offset": [
-    621,
-    3404
-  ],
+  "offset": [621, 3404],
   "opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xE4 0xD7 DUP12 0x4F 0xD4 RETURNDATASIZE 0x26 0xD3 SGT PUSH1 0xCA 0xDE 0xEB DUP2 0xEB 0xB7 SAR PUSH25 0x12A19E81C46C38A3D313E6939BE764736F6C63430006060033 ",
   "pcMap": {
     "0": {
-      "offset": [
-        621,
-        3404
-      ],
+      "offset": [621, 3404],
       "op": "PUSH20",
       "path": "3",
       "value": "0x0"
     },
     "21": {
       "fn": null,
-      "offset": [
-        621,
-        3404
-      ],
+      "offset": [621, 3404],
       "op": "ADDRESS",
       "path": "3"
     },
     "22": {
       "fn": null,
-      "offset": [
-        621,
-        3404
-      ],
+      "offset": [621, 3404],
       "op": "EQ",
       "path": "3"
     },
     "23": {
       "fn": null,
-      "offset": [
-        621,
-        3404
-      ],
+      "offset": [621, 3404],
       "op": "PUSH1",
       "path": "3",
       "value": "0x80"
     },
     "25": {
       "fn": null,
-      "offset": [
-        621,
-        3404
-      ],
+      "offset": [621, 3404],
       "op": "PUSH1",
       "path": "3",
       "value": "0x40"
     },
     "27": {
       "fn": null,
-      "offset": [
-        621,
-        3404
-      ],
+      "offset": [621, 3404],
       "op": "MSTORE",
       "path": "3"
     },
