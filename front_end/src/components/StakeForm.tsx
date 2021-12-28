@@ -1,8 +1,8 @@
-import { Button, Input } from "@material-ui/core";
-import { useEthers, useTokenBalance } from "@usedapp/core";
+import { Button, CircularProgress, Input } from "@material-ui/core";
+import { useEthers, useNotifications, useTokenBalance } from "@usedapp/core";
 import { utils } from "ethers";
 import { formatUnits } from "ethers/lib/utils";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStakeTokens } from "../hooks/useStakeTokens";
 import { Token } from "./Main";
 
@@ -18,6 +18,8 @@ export const StakeForm = ({ token }: StakeFormProps) => {
         ? parseFloat(formatUnits(tokenBalance, 18))
         : 0;
 
+    const { notifications } = useNotifications();
+
     const [amount, setAmount] = useState<
         number | string | Array<number | string>
     >(0);
@@ -28,17 +30,46 @@ export const StakeForm = ({ token }: StakeFormProps) => {
         setAmount(newAmount);
     };
 
-    const { approveAndStake, approveErc20State } = useStakeTokens(tokenAddress);
+    const { approveAndStake, state } = useStakeTokens(tokenAddress);
+
     const handleStakeSubmit = () => {
         const amountAsWei = utils.parseEther(amount.toString());
         return approveAndStake(amountAsWei.toString());
     };
 
+    const isProcessing = state.status === "Mining";
+
+    useEffect(() => {
+        if (
+            notifications.filter(
+                (notification) =>
+                    notification.type === "transactionSucceed" &&
+                    notification.transactionName === "Approve ERC20 transfer"
+            ).length > 0
+        ) {
+            // approved
+        }
+        if (
+            notifications.filter(
+                (notification) =>
+                    notification.type === "transactionSucceed" &&
+                    notification.transactionName === "Stake Tokens"
+            ).length > 0
+        ) {
+            // staked
+        }
+    }, [notifications]);
+
     return (
         <div>
             <Input onChange={handleInputChange} />
-            <Button onClick={handleStakeSubmit} color="primary" size="large">
-                STAKE
+            <Button
+                onClick={handleStakeSubmit}
+                color="primary"
+                size="large"
+                disabled={isProcessing}
+            >
+                {isProcessing ? <CircularProgress size={26} /> : "Stake"}
             </Button>
         </div>
     );
