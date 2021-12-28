@@ -1,4 +1,8 @@
 from typing import Dict, Tuple
+import shutil
+import yaml
+import json
+import os
 
 from brownie import TokenFarm, UselessToken, accounts, config, network
 from brownie.network.contract import ProjectContract
@@ -41,6 +45,24 @@ def deploy_token_farm_and_ust() -> Tuple[ProjectContract, ProjectContract]:
     add_allowed_tokens(token_farm, dict_of_allowed_tokens, account)
 
     return token_farm, ust_token
+
+
+def update_front_end():
+    # Send the build folder
+    copy_folders_to_front_end("./build", "./front_end/src/chain-info")
+
+    # Sending the front end our config in JSON format
+    with open("brownie-config.yaml", "r") as brownie_config:
+        config_dict = yaml.load(brownie_config, Loader=yaml.FullLoader)
+        with open("./front_end/src/brownie-config.json", "w") as brownie_config_json:
+            json.dump(config_dict, brownie_config_json)
+    print("Front end updated!")
+
+
+def copy_folders_to_front_end(src, dest):
+    if os.path.exists(dest):
+        shutil.rmtree(dest)
+    shutil.copytree(src, dest)
 
 
 def add_allowed_tokens(

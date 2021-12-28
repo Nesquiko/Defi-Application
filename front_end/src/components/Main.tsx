@@ -1,6 +1,6 @@
 import { useEthers } from "@usedapp/core";
 import helperConfig from "../help_config.json";
-import networkMapping from "../chains_info/deployments/map.json";
+import networkMapping from "../chain-info/deployments/map.json";
 import { constants } from "ethers";
 import brownieConfig from "../brownie-config.json";
 import dapp from "../dapp.png";
