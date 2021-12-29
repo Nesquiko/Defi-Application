@@ -1,4 +1,5 @@
-import { Button, CircularProgress, Input } from "@material-ui/core";
+import { Button, CircularProgress, Input, Snackbar } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import { useEthers, useNotifications, useTokenBalance } from "@usedapp/core";
 import { utils } from "ethers";
 import { formatUnits } from "ethers/lib/utils";
@@ -39,6 +40,11 @@ export const StakeForm = ({ token }: StakeFormProps) => {
 
     const isProcessing = state.status === "Mining";
 
+    const [showERC20ApprovalSuccess, setShowERC20ApprovalSuccess] =
+        useState(false);
+    const [showStakedTokensSuccess, setShowStakedTokensSuccess] =
+        useState(false);
+
     useEffect(() => {
         if (
             notifications.filter(
@@ -47,7 +53,8 @@ export const StakeForm = ({ token }: StakeFormProps) => {
                     notification.transactionName === "Approve ERC20 transfer"
             ).length > 0
         ) {
-            // approved
+            setShowERC20ApprovalSuccess(true);
+            setShowStakedTokensSuccess(false);
         }
         if (
             notifications.filter(
@@ -56,21 +63,49 @@ export const StakeForm = ({ token }: StakeFormProps) => {
                     notification.transactionName === "Stake Tokens"
             ).length > 0
         ) {
-            // staked
+            setShowERC20ApprovalSuccess(false);
+            setShowStakedTokensSuccess(true);
         }
-    }, [notifications]);
+    }, [notifications, showERC20ApprovalSuccess, showStakedTokensSuccess]);
+
+    const handleCloseSnack = () => {
+        setShowERC20ApprovalSuccess(false);
+        setShowStakedTokensSuccess(false);
+    };
 
     return (
-        <div>
-            <Input onChange={handleInputChange} />
-            <Button
-                onClick={handleStakeSubmit}
-                color="primary"
-                size="large"
-                disabled={isProcessing}
+        <>
+            <div>
+                <Input onChange={handleInputChange} />
+                <Button
+                    onClick={handleStakeSubmit}
+                    color="primary"
+                    size="large"
+                    disabled={isProcessing}
+                >
+                    {isProcessing ? <CircularProgress size={26} /> : "Stake"}
+                </Button>
+            </div>
+
+            <Snackbar
+                open={showERC20ApprovalSuccess}
+                autoHideDuration={5000}
+                onClose={handleCloseSnack}
             >
-                {isProcessing ? <CircularProgress size={26} /> : "Stake"}
-            </Button>
-        </div>
+                <Alert onClose={handleCloseSnack} severity="success">
+                    ERC-20 Token transfer approved! Please confirm second
+                    transaction.
+                </Alert>
+            </Snackbar>
+            <Snackbar
+                open={showStakedTokensSuccess}
+                autoHideDuration={5000}
+                onClose={handleCloseSnack}
+            >
+                <Alert onClose={handleCloseSnack} severity="success">
+                    Tokens staked!
+                </Alert>
+            </Snackbar>
+        </>
     );
 };
